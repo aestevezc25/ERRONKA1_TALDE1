@@ -7,20 +7,27 @@ public class Logotipoa {
 
         Logotipoa logo = new Logotipoa();
 
+        // Imprimir el logotipo completo
+        logo.inprimatuLogotipoa();
+    }
+
+    // Metodo que imprime todas las figuras del logotipo
+    public void inprimatuLogotipoa() {
+
         // Primer triangulo relleno invertido
-        logo.trianguloRellenoInvertido(4);
+        trianguloRellenoInvertido(4);
 
         // Segundo triangulo relleno normal
-        logo.trianguloRellenoNormal(4);
+        trianguloRellenoNormal(4);
 
         // Tercer triangulo hueco normal
-        logo.trianguloHuecoNormal(5);
+        trianguloHuecoNormal(5);
 
         // Cuarto triangulo: punto arriba y base abajo
-        logo.trianguloPuntoBase(4);
+        trianguloPuntoBase(4);
 
         // Quinto triangulo: estrellas huecas
-        logo.trianguloEstrellasHueco(4);
+        trianguloEstrellasHueco(4);
     }
 
     // Triangulo relleno invertido
