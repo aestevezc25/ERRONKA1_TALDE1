@@ -18,6 +18,9 @@ public class Logotipoa {
 
         // Cuarto triangulo: punto arriba y base abajo
         logo.trianguloPuntoBase(4);
+
+        // Quinto triangulo: estrellas huecas
+        logo.trianguloEstrellasHueco(4);
     }
 
     // Triangulo relleno invertido
@@ -104,5 +107,32 @@ public class Logotipoa {
         }
 
         System.out.println();
+    }
+
+    // Quinto triangulo: estrellas huecas
+    private void trianguloEstrellasHueco(int aldea) {
+
+        for (int i = 0; i < aldea; i++) {
+
+            // Espacios antes de cada estrella
+            for (int j = 0; j < aldea - i - 1; j++) {
+                System.out.print(" ");
+            }
+
+            // Estrella izquierda
+            System.out.print("*");
+
+            // Espacios interiores y estrella derecha
+            if (i > 0) {
+
+                for (int j = 0; j < i * 2 - 1; j++) {
+                    System.out.print(" ");
+                }
+
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
     }
 }
