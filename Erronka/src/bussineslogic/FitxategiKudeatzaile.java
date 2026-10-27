@@ -10,36 +10,34 @@ public class FitxategiKudeatzaile {
 	private String fitxategiIzena;
 
 	public FitxategiKudeatzaile() {
-
 	}
 
 	public FitxategiKudeatzaile(String fitxategiIzena) {
 		this.fitxategiIzena = fitxategiIzena;
 	}
-	
-	  public static void fitxategiaIrakurri(String bidea) {
 
-	        try (BufferedReader br =
-	                 new BufferedReader(new FileReader(bidea))) {
+	public static void fitxategiaIrakurri(String bidea) {
+		try (BufferedReader br =
+				new BufferedReader(new FileReader(bidea))) {
 
-	            String lerroa;
+			String lerroa;
 
-	            Kontsola.idatzi("");
-	            Kontsola.idatzi("===== FITXATEGIAREN EDUKIA =====");
+			Kontsola.idatzi("");
+			Kontsola.idatzi("===== FITXATEGIAREN EDUKIA =====");
 
-	            while ((lerroa = br.readLine()) != null) {
-	                Kontsola.idatzi(lerroa);
-	            }
+			while ((lerroa = br.readLine()) != null) {
+				Kontsola.idatzi(lerroa);
+			}
 
-	            Kontsola.idatzi("===== AMAIERA =====");
+			Kontsola.idatzi("===== AMAIERA =====");
 
-	        } catch (IOException e) {
-	            Kontsola.idatzi(
-	                "Ezin izan da fitxategia irakurri: " + bidea
-	            );
-	        }
-	    }
-	  
-	  
+		} catch (IOException e) {
+			Kontsola.idatzi(
+					"Ezin izan da fitxategia irakurri: " + bidea
+					);
+		}
+	}
+
+
 
 }

@@ -6,29 +6,29 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import ikuspegia.*;
-
+import kontrolagailua.Teklatua;
 import eredua.Langilea;
 
 public class LangileKudeatzaile {
 	private String id;
 	private String fitxategiIzena;
+
 	private Map<String, Langilea> mapa = new HashMap<String, Langilea>();
-	
+
 	public LangileKudeatzaile(){
 		this.fitxategiIzena = "./src/fitxategiak/langileak.txt";
 	}
-	
+
 	public LangileKudeatzaile(String fitxategiIzena) {
 		this.fitxategiIzena = fitxategiIzena;
 	}
-	
-	
+
+
 	public void fitxategiaIrakurri() {
 		try {
 			FileReader fr = new FileReader(fitxategiIzena);
-		 	BufferedReader br = new BufferedReader(fr);
+			BufferedReader br = new BufferedReader(fr);
 			br.readLine();
 			do {
 				String lerroa = br.readLine();
@@ -48,18 +48,16 @@ public class LangileKudeatzaile {
 			} while (true);
 			br.close();
 			fr.close();
-			
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		}
-	
-	public void menua(){
-		System.out.println("Sartu ID bat: ");
-		Scanner scanner = new Scanner(System.in);
-		id = scanner.nextLine();
-		 
 	}
+
+	public void menua() {
+	    Kontsola.idatzi("Sartu ID bat: ");
+	    id = Teklatua.irakurri();
+	}
+
 	public void bilatuEtaInprimatu(String id) {
 		if (mapa.isEmpty()) {
 			fitxategiaIrakurri();
@@ -76,34 +74,34 @@ public class LangileKudeatzaile {
 			Kontsola.idatzi("Langilea ez da existitzen (ID: " + id + "). Saiatu berriro.");
 		}
 	}
-	
+
 	public void nagusiakBilatuetaInprimatu(String nagusiId) {
-	    if (mapa.isEmpty()) {
-	        fitxategiaIrakurri();
-	    }
+		if (mapa.isEmpty()) {
+			fitxategiaIrakurri();
+		}
 
-	    boolean aurkitua = false;
+		boolean aurkitua = false;
 
-	    for (Langilea l : mapa.values()) {
-	      
-	        if (l.getId_nagusi() != null && l.getId_nagusi().equals(nagusiId)) {
-	            if (!aurkitua) {
-	                Kontsola.idatzi(nagusiId + "NAGUSIAREN LANGILEAK");
-	                aurkitua = true;
-	            }
-	            Kontsola.idatzi("Izen-abizenak: " + l.getIzena() + " " + l.getAbizena());
-	            Kontsola.idatzi("Emaila: " + l.getPostaElektronikoa());
-	            Kontsola.idatzi("----------------------------------");
-	        }
-	    }
+		for (Langilea l : mapa.values()) {
 
-	    if (!aurkitua) {
-	        Kontsola.idatzi("Ez da aurkitu mendeko langilerik (Nagusi ID: " + nagusiId + ").");
-	    }
+			if (l.getId_nagusi() != null && l.getId_nagusi().equals(nagusiId)) {
+				if (!aurkitua) {
+					Kontsola.idatzi(nagusiId + "NAGUSIAREN LANGILEAK");
+					aurkitua = true;
+				}
+				Kontsola.idatzi("Izen-abizenak: " + l.getIzena() + " " + l.getAbizena());
+				Kontsola.idatzi("Emaila: " + l.getPostaElektronikoa());
+				Kontsola.idatzi("----------------------------------");
+			}
+		}
+
+		if (!aurkitua) {
+			Kontsola.idatzi("Ez da aurkitu mendeko langilerik (Nagusi ID: " + nagusiId + ").");
+		}
 	}
-	
-	
-	
+
+
+
 	public void setIzena(String fitxategiIzena) {
 
 		this.fitxategiIzena = fitxategiIzena;
